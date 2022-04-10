@@ -1,0 +1,33 @@
+<center> Hijo: additem.html </center>
+{% extends 'home.html' %}
+{% block content %} 
+
+<head>
+    <title>zFinder {% if title %} | {{ title }} {% endif %}</title>
+</head>
+
+<fieldset>
+    <h1> <center> <b> Django MVT  </b> - Entrega intermedia </center> </h1> 
+</fieldset>
+
+<center>
+    <h1 style = 'color:blue'> <center> Agregar ítem nuevo a la base de datos </center> </h1>
+    <a href="{% url 'index' %}">Volver</a>
+</center>
+
+<fieldset>
+        <legend style = 'color:red'> Ingrese los campos requeridos</legend>
+        
+        <form form = 'EntregaIntermedia/forms' method = 'POST'>
+            {% csrf_token %}
+            <p>
+                {{ form.as_table }}
+            </p>
+            <input type = "submit" value = "Agregar ítem">
+        {% if message %}
+            <b> {{ message }} </b>
+        {% endif %}
+        </form>
+</fieldset>
+
+{% endblock %}

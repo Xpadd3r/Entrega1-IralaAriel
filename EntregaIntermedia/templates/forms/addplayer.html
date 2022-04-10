@@ -1,0 +1,33 @@
+<center> Hijo: addplayer.html </center>
+{% extends 'home.html' %}
+
+{% block content %} 
+
+<head>
+    <title>zFinder {% if title %} | {{ title }} {% endif %}</title>
+</head>
+
+<center>
+    <h1 style = 'color:blue'> <center> Agregar jugador nuevo a la base de datos </center> </h1>
+    <a href="{% url 'index' %}">Volver</a>
+</center>
+
+<fieldset>
+        <legend style = 'color:red'> Ingrese los campos requeridos</legend>
+        
+        <form form = 'EntregaIntermedia/forms' method = 'POST'>
+            {% csrf_token %}
+            <p>
+                {{ form.as_table }}
+                <br> <b> Formato de fecha: AAAA-MM-DD (Año, Mes, Día) </b> </br>
+            </p>
+            <input type = "submit" value = "Agregar jugador">
+        </form>
+
+        {% if message %}
+            <b> {{ message }} </b>
+        {% endif %}
+
+</fieldset>
+
+{% endblock %}

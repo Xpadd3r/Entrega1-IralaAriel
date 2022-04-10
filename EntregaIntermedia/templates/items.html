@@ -1,0 +1,30 @@
+<center> Hijo: items.html </center>
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>zFinder {% if title %} | {{ title }} {% endif %}</title>
+</head>
+
+<center>
+    <img src={% static "BellPepper.png" %}/> 
+    <img src={% static "Chicken.png" %}/> 
+    <img src={% static "AlcoholWipes.png" %}/> 
+    <img src={% static "Bacon.png" %}/> 
+    <img src={% static "Carrots.png" %}/> 
+</center>
+
+<h1 style = 'color:blue'> <center> <b> Ítems </b> - Longitud de la base de datos: {{ amount }}</center> </h1> 
+<center> <a href="{% url 'index' %}">Volver</a></center> <br>
+{% for x in itemsdata %}
+
+    <fieldset>
+        <legend style = 'color:red' ><b> {{ x.itemname }} </b></legend>
+        <p><b>Tipo de dato y posición en la base de datos:</b> {{ x }}</p>
+        <p><b>Cantidad:</b> {{ x.itemquantity }}</p>
+        <p><b>Posición en el mundo (X,Y,Z):</b> {{ x.itemposX }},{{ x.itemposY }},{{ x.itemposZ }} </p>
+    </fieldset>
+
+{% endfor %}
+{% endblock %}

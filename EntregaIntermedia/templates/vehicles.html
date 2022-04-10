@@ -1,0 +1,28 @@
+<center> Hijo: vehicles.html </center>
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>zFinder {% if title %} | {{ title }} {% endif %}</title>
+</head>
+
+<center>
+    <img src={% static "ChevalierCeriseWagon.gif" %}/> 
+    <img src={% static "PickUpVan.gif" %}/>
+</center>
+
+<h1 style = 'color:blue'> <center> <b> Vehículos </b> - Longitud de la base de datos: {{ amount }}</center> </h1> 
+<center> <a href="{% url 'index' %}">Volver</a></center> <br>
+{% for x in vehiclesdata %}
+
+    <fieldset>
+        <legend style = 'color:red' ><b> {{ x.vehiclemodel }} </b></legend>
+        <p><b>Tipo de dato y posición en la base de datos:</b> {{ x }}</p>
+        <p><b>Nombre (tipo) de vehículo:</b> {{ x.vehiclemodel }}</p>
+        <p><b>Posición en el mundo (X,Y,Z):</b> {{ x.vehicleposX }},{{ x.vehicleposY }} </p>
+    </fieldset>
+
+{% endfor %}
+{% endblock %}
+

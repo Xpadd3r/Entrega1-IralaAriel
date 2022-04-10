@@ -1,0 +1,37 @@
+<center> Hijo: searchadmin.html </center>
+{% extends 'home.html' %}
+{% block content %} 
+
+<head>
+    <title>zFinder {% if title %} | {{ title }} {% endif %}</title>
+</head>
+
+<center>
+    <h1 style = 'color:blue'> <center> Buscador de administradores </center> </h1>
+    <a href="{% url 'index' %}">Volver</a>
+    
+<form form = 'EntregaIntermedia/forms' method = 'POST'>
+    {% csrf_token %}
+    <p>
+        Busque administradores por su nivel de acceso <br>
+        <br> <input type = "text" name = "accesslevel" placeholder = 'observer, moderator, administrator' required>
+        <input type = "submit" value = "Buscar"> <br>
+    </p>
+
+</form>
+</center>
+    
+{% if not elements %}
+    <fieldset> <h1 style = 'color:red'> <center> {{ message }} </center> </h1></fieldset>
+{% endif %}
+
+{% for element in elements %}
+
+    <fieldset>
+        <legend style = 'color:green'>{{ element.adminid }}</legend>
+        <p><b>Tipo de dato y posición en la base de datos:</b> {{ element }}</p>
+        <p><b>Nivel de acceso:</b> {{ element.adminaccesslevel }}</p>
+    </fieldset>
+
+{% endfor %}
+{% endblock %}
