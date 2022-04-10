@@ -13,6 +13,7 @@ Proyecto Web Django con patrón MVT que incluya:
 funcionalidades.
 
 Uso:
+
 -> Iniciar el servidor e ingresar a la dirección IP de la misma en formato IP:PUERTO.       
 -> La base de datos ya posee algunas entradas disponibles para explorar.
 -> Cuando se busca alguna entrada, se utiliza exactamente lo que se ingresa en el campo (sensible a mayúsculas).
